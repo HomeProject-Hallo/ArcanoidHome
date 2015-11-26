@@ -198,6 +198,7 @@ class Program
                 ConsoleKeyInfo pressed = Console.ReadKey();
                 if (pressed.Key == ConsoleKey.Enter)
                 {
+                    Console.Clear();
                     Main();
                 }
                 else if (pressed.Key != ConsoleKey.Enter)
