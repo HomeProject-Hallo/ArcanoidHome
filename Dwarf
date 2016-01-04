@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+
+class Program
+{
+    static void Main()
+    {
+        int minLeft = 0;
+        int maxLeft = 79;
+        int minTop = 0;
+        int maxTop = 22;
+
+        char rock = '@';
+        string dwarf = "(0)";
+
+        int dwarfLeft = 30;
+
+        while (true)
+        {
+            //Dwarf movement
+            if (Console.KeyAvailable)
+            {
+                ConsoleKeyInfo pressed = Console.ReadKey();
+                if (pressed.Key == ConsoleKey.LeftArrow)
+                {
+                    if (dwarfLeft > minLeft)
+                    {
+                        // Move left
+                        dwarfLeft = dwarfLeft - 1;
+                    }
+                }
+                if (pressed.Key == ConsoleKey.RightArrow)
+                {
+                    if (dwarfLeft <= maxLeft - dwarf.Length)
+                    {
+                        // Move right    
+                        dwarfLeft = dwarfLeft + 1;
+                    }
+                }
+            }
+
+            //Dwarf paddle
+            Console.SetCursorPosition(dwarfLeft, maxTop);
+            Console.WriteLine(dwarf);
+
+            Thread.Sleep(150);
+            Console.Clear();
+        }
+
+
+    }
+}
+
