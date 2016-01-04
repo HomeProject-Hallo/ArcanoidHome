@@ -10,6 +10,10 @@ class Program
 {
     static void Main()
     {
+        Random random = new Random();
+
+        Console.ForegroundColor = ConsoleColor.White;
+
         int minLeft = 0;
         int maxLeft = 79;
         int minTop = 0;
@@ -18,10 +22,36 @@ class Program
         char rock = '@';
         string dwarf = "(0)";
 
+        int rockTop = minTop;
+        int rockLeft = random.Next(1, maxLeft - 1);
         int dwarfLeft = 30;
 
         while (true)
         {
+            //Rock movement
+            if (rockTop != maxTop)
+            {
+                rockTop++;                
+            }
+            if (rockTop == maxTop)
+            {
+                if (rockLeft >= dwarfLeft && rockLeft <= dwarfLeft + dwarf.Length)
+                {
+                    // Game over
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.SetCursorPosition(33, 10);
+                    Console.WriteLine("---GAME OVER---");
+                    Console.ReadLine();
+                    Main();
+                }
+
+                else
+                {
+                    
+                }
+            }
+
             //Dwarf movement
             if (Console.KeyAvailable)
             {
@@ -44,6 +74,10 @@ class Program
                 }
             }
 
+            //Render ball
+            Console.SetCursorPosition(rockLeft, rockTop);
+            Console.Write(rock);
+
             //Dwarf paddle
             Console.SetCursorPosition(dwarfLeft, maxTop);
             Console.WriteLine(dwarf);
@@ -55,4 +89,3 @@ class Program
 
     }
 }
-
