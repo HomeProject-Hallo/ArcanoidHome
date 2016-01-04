@@ -12,14 +12,25 @@ class Program
     {
         Random random = new Random();
 
+        Console.Clear();
+        Console.BackgroundColor = ConsoleColor.DarkCyan;
         Console.ForegroundColor = ConsoleColor.White;
+
+        Console.SetCursorPosition(28, 10);
+        Console.Write("Enter name: ");
 
         int minLeft = 0;
         int maxLeft = 79;
         int minTop = 0;
         int maxTop = 22;
 
+        int myScore = 0;
+
+        char noRock = ' ';
         char rock = '@';
+        string myName = Console.ReadLine();
+        string score = "Score: ";
+        string name = "Name: ";
         string dwarf = "(0)";
 
         int rockTop = minTop;
@@ -31,7 +42,7 @@ class Program
             //Rock movement
             if (rockTop != maxTop)
             {
-                rockTop++;                
+                rockTop++;
             }
             if (rockTop == maxTop)
             {
@@ -43,12 +54,13 @@ class Program
                     Console.SetCursorPosition(33, 10);
                     Console.WriteLine("---GAME OVER---");
                     Console.ReadLine();
-                    Main();
+                    Main();                    
                 }
 
                 else
                 {
-                    
+                    rock = noRock;
+                    myScore++;                    
                 }
             }
 
@@ -74,13 +86,21 @@ class Program
                 }
             }
 
-            //Render ball
+            //Render rock
             Console.SetCursorPosition(rockLeft, rockTop);
             Console.Write(rock);
 
-            //Dwarf paddle
+            //Render dwarf
             Console.SetCursorPosition(dwarfLeft, maxTop);
             Console.WriteLine(dwarf);
+
+            //Name
+            Console.SetCursorPosition(1, 23);
+            Console.WriteLine(name + myName);
+
+            //Score
+            Console.SetCursorPosition(1, 24);
+            Console.WriteLine(score + myScore);
 
             Thread.Sleep(150);
             Console.Clear();
