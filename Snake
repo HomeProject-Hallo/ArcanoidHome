@@ -1,0 +1,78 @@
+https://www.youtube.com/watch?v=xuEIK587jio
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+
+class Program
+{
+    static void Main()
+    {
+        Random random = new Random();
+
+        int minLeft = 0;
+        int maxLeft = 79;
+        int minTop = 0;
+        int maxTop = 22;
+
+        char startSnake = '*';
+        char food = '0';
+        string snake;
+
+        int snakeTop = random.Next(1, maxTop - 1);
+        int snakeLeft = random.Next(1, maxLeft - 1);
+
+        int foodTop = random.Next(1, maxTop - 1);
+        int foodLeft = random.Next(1, maxLeft - 1);
+
+        while (true)
+        {
+            //Snake
+            //Snake Movement
+
+
+            if (Console.KeyAvailable)
+            {
+                ConsoleKeyInfo pressed = Console.ReadKey();
+                if (pressed.Key == ConsoleKey.LeftArrow)
+                {
+                                        
+                }
+                if (pressed.Key == ConsoleKey.RightArrow)
+                {
+
+                }
+                if (pressed.Key == ConsoleKey.UpArrow)
+                {
+
+                }
+                if (pressed.Key == ConsoleKey.DownArrow)
+                {
+
+                }
+            }      
+               
+            //Render Snake
+
+            Console.SetCursorPosition(snakeLeft, snakeTop);
+            Console.WriteLine(startSnake);
+
+            //Food
+
+            //Render Food
+
+            Console.SetCursorPosition(foodLeft, foodTop);
+            Console.WriteLine(food);
+
+            //Food spown
+
+            //Speed
+
+            Thread.Sleep(200);
+        } 
+    }
+} 
